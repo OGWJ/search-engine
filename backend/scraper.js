@@ -1,4 +1,5 @@
 const websites = require('./websites');
+const performance = require('performance');
 
 // const fetch = require('fetch');
 const fetch = require('node-fetch');
@@ -12,6 +13,46 @@ async function scrapePage(url) {
 function countOccurences(re, str) {
     return (str.match(re) || []).length;
 }
+
+
+// DEV ~ ~ ~ ~ ~ ~ ~ ~
+
+let urlList = ['https://google.com/', 'https://youtube.com/'];
+
+// asyncronous solution
+function scrapePages(urlList) {
+
+    let t0 = new Date().getTime();
+
+    let fetchPromises = [];
+    let textPromises = [];
+    let scrapedContent = [];
+
+    for (url of urlList) {
+        fetchPromises.push(fetch(url));
+    }
+
+    Promise.all(fetchPromises).then(responses => {
+        for(promise of responses) {
+            textPromises.push(promise.text());
+        }
+    }).then(_ => {
+
+    Promise.all(textPromises).then(responses => {
+        for (text of responses ) {
+            scrapedContent.push(text);
+        }
+        })
+    })
+
+    let t1 = new Date().getTime();
+    console.log(`exec time: ${t1-t0}ms`)
+    return scrapedContent;
+}
+
+scrapePages(websites);
+
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 async function getMatches(query) {
 
