@@ -3,9 +3,10 @@
 // 2 : 'stackoverflow.com' };
 
 const websites = [
-    'test.com',
-    'test2.com',
-    'test3.com'
+    'https://github.com/',
+    'https://google.com/',
+    'https://github.com/',
+    'https://youtube.com/'
 ]
 
 module.exports = websites;
