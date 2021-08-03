@@ -5,9 +5,11 @@ const websites = require('../websites');
 jest.setTimeout(12000);
 
 describe('handlers', () => {
+
     test('handleQuery should return an array of website urls occurances of that query in the HTML', async () => {
         const data = await handleQuery('google');
         expect(data).toBeInstanceOf(Array);
         expect(data).toHaveLength(websites.length);
     })
+
 })

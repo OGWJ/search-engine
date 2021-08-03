@@ -1,6 +1,6 @@
 const websites = require('./websites');
-const getOrderedOccurenceList = require('./scraper');
-const { spellCheck, _ } = require('./utils');
+const { _, getOrderedOccurenceList } = require('./scraper');
+const { getRandIdx, spellCheck } = require('./utils');
 
 function addUrlBias(results, query, scalar=0.5) {
     for ([url, score] of results) {

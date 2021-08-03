@@ -1,5 +1,4 @@
 const websites = require('./websites');
-const performance = require('performance');
 
 // const fetch = require('fetch');
 const fetch = require('node-fetch');
@@ -88,4 +87,4 @@ async function getOrderedOccurenceList(query) {
     return results.sort(sortByScore);
 }
 
-module.exports = getOrderedOccurenceList;
+module.exports = { getOrderedOccurenceList, scrapePages };
