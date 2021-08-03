@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const websites = require('./websites');
 const { handleQuery, handleFetchByID } = require('./handlers');
-const getRandIdx = require('./utils');
+const { spellCheck, getRandIdx } = require('./utils');
 
 app.use(express.json())
 app.use(cors())

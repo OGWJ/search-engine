@@ -1,22 +1,37 @@
 const websites = require('./websites');
 const getOrderedOccurenceList = require('./scraper');
+const { spellCheck, getRandIdx } = require('./utils');
+
+function addUrlBias(results, query, scalar=0.5) {
+    for ([url, score] of results) {
+        for (word of query) {
+            url.includes(word) ? score += (score * scalar) : score -= (score * (scalar / 5));
+        }
+    }
+    return results;
+}
 
 async function handleQuery(query) {
-    // TODO: add url bias to results
-    let urlBias = websites.filter( website => {
-             return (website.includes(query));
-    });
-    let results = await getOrderedOccurenceList(query);
+    // split multiword query by '+'
+    let splitQuery = query.split('+');
+    let checkedWords = [];
+    let matchingUrls = [];
 
-    for (let i=0; i < results.length; i++) {
-        for (let j=0; j<urlBias.length; j++) {
-            if (urlBias[j] == results[i]) {
-                results[i][1] *= 2;
-            }
+    // check each word
+    // push word into checked
+    // if mispelt, push array of suggested words instead.
+    for (word of splitQuery) {
+        // use buffer becuase spellCheck can return an arr
+        let buffer = spellCheck(word);
+        // push contents into checkedWords
+        for (resp of buffer) {
+            checkedWords.push(resp);
         }
-        
     }
-    console.log(results);
+
+    let results = await getOrderedOccurenceList(checkedWords);
+    results = addUrlBias(results, checkedWords);
+
     return results;
 }
 

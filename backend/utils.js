@@ -23,4 +23,4 @@ function spellCheck(str) {
     return arr;
 }
 
-module.exports = getRandIdx;
+module.exports = { getRandIdx, spellCheck };

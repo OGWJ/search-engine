@@ -9,35 +9,34 @@ async function scrapePage(url) {
     return text;
 }
 
-async function main() {
-    let resp = await scrapePage('https://github.com/');
-    console.log(resp);
-}
-
 function countOccurences(re, str) {
     return (str.match(re) || []).length;
 }
 
 async function getMatches(query) {
 
-    // console.log(`searching for ${query}...`)
-
     let matches = [];
-    let re = RegExp(`${query}`, "g") 
+    let reArr = [];
+
+    for (word of query) {
+        reArr.push(RegExp(`${word}`, "g"));
+    }
 
     for (url of websites) {
-        // console.log(`scraping ${url}`);
 
         let content;
-        let count;
+        let count = 0;
 
         try {
             content = await scrapePage(url);
-            count = await countOccurences(re, content);
+
+            for (re of reArr) {
+                count += await countOccurences(re, content);
+            }
+
         } catch (err) {
             console.log(err.message);
         }
-        // console.log(count);
         matches.push([url, count]);
     }
 
@@ -56,11 +55,6 @@ function sortByScore(a, b) {
 async function getOrderedOccurenceList(query) {
     const results = await getMatches(query);
     return results.sort(sortByScore);
-    // console.log(`websites that include \'${query}\' are :`);
-    // for ( res of results ) {
-    //      console.log(res);
-    // }
-    // return results;
 }
 
 module.exports = getOrderedOccurenceList;
