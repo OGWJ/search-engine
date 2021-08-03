@@ -1,21 +1,13 @@
 const { handleQuery, handleFetchByID } = require('../handlers');
 const websites = require('../websites');
 
+// web scraping takes some time, make timeout 12s
+jest.setTimeout(12000);
+
 describe('handlers', () => {
-    test('handleQuery should return website url that contains query', () => {
-        expect(handleQuery('2')).toEqual(["test2.com"]);
+    test('handleQuery should return an array of website urls occurances of that query in the HTML', async () => {
+        const data = await handleQuery('google');
+        expect(data).toBeInstanceOf(Array);
+        expect(data).toHaveLength(websites.length);
     })
-
-    test('handleQuery should return an empty array if no urls match query', () => {
-        expect(handleQuery('sdfjkasdghjsdfbnmxcvhjkasdgjh')).toEqual([]);
-    })
-
-    test('handleFetchByID should return website url at index of ID', () => {
-        expect(handleFetchByID('2')).toEqual({"test3.com": 3});
-    })
-
-    test('handleFetchByID should return last website in array if index is out of range', () => {
-        expect(handleFetchByID('999999')).toEqual({"test3.com": 3});
-    })
-
 })
