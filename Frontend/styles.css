@@ -1,0 +1,52 @@
+body {  
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    color: rgb(255,128,0);
+}
+
+section {
+    margin-top: 20vw;
+}
+
+i {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
+
+#btns {
+    padding: 20px;
+    margin-left: 158px;
+}
+
+
+#btns > .col > form > input {
+    padding: 6px 13px;
+    border: none;
+    background-color: rgba(210, 210, 210, 0.15);
+}
+
+#IFL{
+    margin-left: -120px;
+}
+
+#search-bar {
+    width: 600px;
+    border-radius: 33px;
+}
+
+#search-bar:hover, #btns > input:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+#search-bar:focus {
+    position: relative;
+    z-index: 2;
+}
