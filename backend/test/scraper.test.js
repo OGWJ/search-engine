@@ -1,4 +1,4 @@
-const websites = require('../websites');
+const websites = require('../data/websites');
 const { _, scrapePages} = require('../scraper')
 
 describe("web scraper", () => {

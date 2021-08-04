@@ -1,6 +1,6 @@
 const { handleQuery, handleFetchByID } = require('../handlers');
 // const { getOrderedOccurenceList } = require('../scraper');
-const websites = require('../websites');
+const websites = require('../data/websites');
 
 // web scraping can take some time
 jest.setTimeout(9000);

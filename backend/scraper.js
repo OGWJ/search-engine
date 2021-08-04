@@ -1,4 +1,5 @@
-const websites = require('./websites');
+const websites = require('./data/websites');
+const { getRandIdx, sortByScore } = require('./utils');
 
 // const fetch = require('fetch');
 const fetch = require('node-fetch');
@@ -7,12 +8,8 @@ function countOccurences(re, str) {
     return (str.match(re) || []).length;
 }
 
-// DEV ~ ~ ~ ~ ~ ~ ~ ~
-
-// asyncronous solution
 async function scrapePages(urlList) {
 
-    // let t0 = new Date().getTime();
     let fetchPromises = [];
     let textPromises = [];
     let scrapedContent = [];
@@ -36,10 +33,6 @@ async function scrapePages(urlList) {
         })
     return scrapedContent;
 }
-
-// scrapePages(websites);
-
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 async function getMatches(query) {
 
@@ -69,15 +62,6 @@ async function getMatches(query) {
     }
 
     return matches;
-}
-
-function sortByScore(a, b) {
-    if (a[1] === b[1]) {
-        return 0;
-    }
-    else {
-        return (a[1] > b[1]) ? -1 : 1;
-    }
 }
 
 async function getOrderedOccurenceList(query) {

@@ -1,9 +1,18 @@
-const websites = require('./websites');
+const websites = require('./data/websites');
 const Typo = require('typo-js')
 const dictionary = new Typo('en_US');
 
 function getRandIdx() {
     return Math.floor(Math.random() * websites.length);
+}
+
+function sortByScore(a, b) {
+    if (a[1] === b[1]) {
+        return 0;
+    }
+    else {
+        return (a[1] > b[1]) ? -1 : 1;
+    }
 }
 
 function spellCheck(str) {
@@ -23,4 +32,4 @@ function spellCheck(str) {
     return arr;
 }
 
-module.exports = { getRandIdx, spellCheck };
+module.exports = { getRandIdx, sortByScore, spellCheck };

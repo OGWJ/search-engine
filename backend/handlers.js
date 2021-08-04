@@ -1,15 +1,7 @@
-const websites = require('./websites');
+const websites = require('./data/websites');
 const { _, getOrderedOccurenceList } = require('./scraper');
 const { getRandIdx, spellCheck } = require('./utils');
-
-function addUrlBias(results, query, scalar=0.5) {
-    for ([url, score] of results) {
-        for (word of query) {
-            url.includes(word) ? score += (score * scalar) : score -= (score * (scalar / 5));
-        }
-    }
-    return results;
-}
+const addUrlBias = require('./addUrlBias');
 
 async function handleQuery(query) {
     // split multiword query by '+'
