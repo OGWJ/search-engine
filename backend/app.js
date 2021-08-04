@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const websites = require('./websites');
 const { handleQuery, handleFetchByID } = require('./handlers');
 const { spellCheck, getRandIdx } = require('./utils');
 
