@@ -34,7 +34,6 @@ async function scrapePages(urlList) {
                 scrapedContent.push(text);
             }
         })
-
     return scrapedContent;
 }
 
