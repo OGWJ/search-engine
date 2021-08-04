@@ -3,7 +3,6 @@ const websites = [
     'https://google.com/',
     'https://youtube.com/',
     'https://stackoverflow.com/',
-    // 'https://slack.com/',
     'https://kaggle.com/',
     'https://news.ycombinator.com/',
     'https://slashdot.org/',
