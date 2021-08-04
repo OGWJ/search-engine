@@ -69,7 +69,6 @@ async function getMatches(query) {
         matches.push([websites[idx++], count]);
     }
 
-    console.log(matches);
     return matches;
 }
 
