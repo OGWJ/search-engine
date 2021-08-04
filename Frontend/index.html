@@ -11,23 +11,34 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <script defer src="bundle.js"></script>
     <title>Search Engine</title>
 </head>
 <body>
-    <form>
+    <section>
         <h1>DuckDuckGooooooogle</h1>
         <div class="input-group">
             <div class="input-group-prepend">
                 <i class="fas fa-search"></i>
             </div>
+            <form id="search-form">
             <div class="form-outline">             
-                <input type="search" class="form-control" id="search-bar">
+                <input type="search" class="form-control" name="searchBar" id="search-bar">
             </div>
         </div>
-        <div id="btns">
-            <input type="submit" value="Search" id="search-btn">
-            <input type="submit" value="I'm feeling lucky">
+        <div class="row" id="btns">
+            <div class="col">
+                
+                    <input type="submit" value="Search">
+                </div>
+                </form>
+            
+            <div class="col">
+                <form action="./Pages/SearchResults.html">
+                    <input type="submit" value="I'm feeling lucky" id="IFL">
+                </form>
+            </div>
         </div>
-    </form>
+    </section>
 </body>
 </html>

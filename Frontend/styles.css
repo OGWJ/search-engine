@@ -11,7 +11,7 @@ h1 {
     color: rgb(255,128,0);
 }
 
-form {
+section {
     margin-top: 20vw;
 }
 
@@ -27,14 +27,14 @@ i {
 }
 
 
-#btns > input {
+#btns > .col > form > input {
     padding: 6px 13px;
     border: none;
     background-color: rgba(210, 210, 210, 0.15);
 }
 
-#search-btn {
-    margin-right: 10px;
+#IFL{
+    margin-left: -120px;
 }
 
 #search-bar {
